@@ -87,24 +87,54 @@ def cadastrar_ativo():
     salvar_dados(dados)
     print(f"\nSucesso: Ativo '{nome}' cadastrado com sucesso!")
 
+
+def listar_ativos():
+    dados = carregar_dados()
+
+    if not dados:
+        print("\nNenhum ativo cadastrado.")
+        return
+
+    print("\n--- ATIVOS CADASTRADOS ---")
+
+    for id_ativo, ativo in dados.items():
+        print(f"\nID: {id_ativo}")
+        print(f"Nome: {ativo['nome']}")
+        print(f"Tipo: {ativo['tipo']}")
+        print(f"Responsável: {ativo['responsavel']}")
+        print(f"Setor: {ativo['setor']}")
+
+        print("Vulnerabilidades:")
+
+        if ativo["vulnerabilidades"]:
+            for vuln in ativo["vulnerabilidades"]:
+                print(f" - {vuln}")
+        else:
+            print(" - Nenhuma vulnerabilidade cadastrada")
+            
+
+
 # --- REQUISITO 1: Menu textual com tratamento de erros ---
 def exibir_menu():
     while True:
         print("\n" + "="*40)
         print("SISTEMA DE INVENTÁRIO DE CIBERSEGURANÇA")
         print("="*40)
-        print("1. Cadastrar Ativo de TI (Create)")
-        print("2. Sair do Sistema")
+        print("1. Cadastrar Ativo")
+        print("2. Listar Ativos")
+        print("3. Sair")
         
         opcao = input("\nEscolha uma opção: ").strip()
 
         if opcao == '1':
-            cadastrar_ativo()
+             cadastrar_ativo()
+
         elif opcao == '2':
-            print("Encerrando o sistema...")
+            listar_ativos()
+
+        elif opcao == '3':
+            print("Encerrando...")
             break
-        else:
-            print("Erro: Comando inválido. Por favor, digite 1 ou 2.")
 
 if __name__ == "__main__":
     exibir_menu()   

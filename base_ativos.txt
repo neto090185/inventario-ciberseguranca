@@ -20,5 +20,14 @@
             "DSDS",
             "DSDS"
         ]
+    },
+    "222": {
+        "nome": "TESTE 2",
+        "responsavel": "JOAQUIM NETO",
+        "setor": "TI",
+        "tipo": "NOTEBOOK",
+        "vulnerabilidades": [
+            "ANTI VIRUS"
+        ]
     }
 }
